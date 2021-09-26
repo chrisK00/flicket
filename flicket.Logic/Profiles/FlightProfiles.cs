@@ -2,7 +2,7 @@
 using flicket.Models.Entities;
 using flicket.Models.ViewModels;
 
-namespace flicket.Models.Profiles
+namespace flicket.Logic.Profiles
 {
     public class FlightProfiles : Profile
     {

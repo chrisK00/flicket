@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace flicket.Models.Commands
+namespace flicket.Models
 {
-    public class Foo
-    {
-        
-    }
+    
 }

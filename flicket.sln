@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.MVC", "flicket.MVC\flicket.MVC.csproj", "{B09D1AFA-338C-4E40-8307-ED5B2914D8C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.MVC", "flicket.MVC\flicket.MVC.csproj", "{B09D1AFA-338C-4E40-8307-ED5B2914D8C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.Data", "flicket.Data\flicket.Data.csproj", "{197F991C-DE9E-4877-A9C8-93A02086F338}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Data", "flicket.Data\flicket.Data.csproj", "{197F991C-DE9E-4877-A9C8-93A02086F338}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.Logic", "flicket.Logic\flicket.Logic.csproj", "{19345574-6EF4-495B-8D9E-34D8AC9E466A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Logic", "flicket.Logic\flicket.Logic.csproj", "{19345574-6EF4-495B-8D9E-34D8AC9E466A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.Models", "flicket.Models\flicket.Models.csproj", "{72194E32-8880-41C1-A706-ECB853C7FA14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Models", "flicket.Models\flicket.Models.csproj", "{72194E32-8880-41C1-A706-ECB853C7FA14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.Tests", "flicket.Tests\flicket.Tests.csproj", "{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{72194E32-8880-41C1-A706-ECB853C7FA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72194E32-8880-41C1-A706-ECB853C7FA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72194E32-8880-41C1-A706-ECB853C7FA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
