@@ -3,7 +3,6 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    TimeSpan flightLength;
 }
 
 <div class="row">
@@ -18,10 +17,8 @@
                     <div>
                         Departure: @flight.Departure.ToShortDateString() <i style="color:lightpink" class="fa fa-plane"></i>
                         @flight.Departure.ToShortTimeString()-@flight.Arrival.ToShortTimeString()
-                        @{
-                            flightLength = flight.Arrival - flight.Departure;
-                        }
-                        Travel time: @flightLength.Hours hours
+                      
+                        Travel time: @flight.Duration.ToString(@"hh\:mm") hours
                     </div>
                 </div>
                 <div class="card-footer">
