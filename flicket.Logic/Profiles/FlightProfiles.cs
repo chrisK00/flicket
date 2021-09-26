@@ -9,7 +9,7 @@ namespace flicket.Logic.Profiles
         public FlightProfiles()
         {
             CreateMap<Flight, FlightDetailVM>();
-            CreateMap<Flight, FlightListVM>();
+            CreateMap<Flight, FlightListVM>().ForMember(dest => dest.Airline, opt => opt.MapFrom(src =>  src.Airline.Name));
         }
     }
 }

@@ -17,16 +17,16 @@
                     <div>
                         Departure: @flight.Departure.ToShortDateString() <i style="color:lightpink" class="fa fa-plane"></i>
                         @flight.Departure.ToShortTimeString()-@flight.Arrival.ToShortTimeString()
-                      
+
                         Travel time: @flight.Duration.ToString(@"hh\:mm") hours
                     </div>
                 </div>
-                <div class="card-footer">
-                    <a class="btn btn-info" asp-controller="Ticket" asp-action="Book" asp-route-flightId="@flight.Id">Book</a>
-                    Economy: @flight.EconomyPrice.ToString("c")
-                    Business: @flight.BusinessPrice.ToString("c")
+                <div class="card-footer d-flex">
+                        <a class="btn btn-info mr-5" asp-controller="Ticket" asp-action="Book" asp-route-flightId="@flight.Id">Book</a>
+                        Economy: @flight.EconomyPrice.ToString("c")
+                        Business: @flight.BusinessPrice.ToString("c")
+                         <div class="text-info ml-5">@flight.Airline</div>
                 </div>
-
             </div>
         }
     </div>
