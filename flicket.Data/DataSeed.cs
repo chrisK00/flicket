@@ -27,6 +27,15 @@ namespace flicket.Data
                     Arrival = DateTime.UtcNow.AddDays(15).AddHours(3),
                     BusinessPrice = 150,
                     EconomyPrice = 100
+                },
+                new Flight {
+                    Airline = new Airline { Name = "SAS"},
+                    From = new Airport { Location = "Los Angeles International Airport, Los Angeles, California, USA", Name = "LAX"},
+                    To = new Airport { Location = "Athens, Greece", Name = "ATH"},
+                    Departure = DateTime.UtcNow.AddDays(10),
+                    Arrival = DateTime.UtcNow.AddDays(10).AddHours(5),
+                    BusinessPrice = 250,
+                    EconomyPrice = 500
                 }
             };
 

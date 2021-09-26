@@ -18,7 +18,6 @@ namespace flicket.MVC
                 .CreateLogger();
 
             var host = CreateHostBuilder(args).Build();
-
             using var scope = host.Services.CreateScope();
 
             try
