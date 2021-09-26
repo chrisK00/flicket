@@ -3,19 +3,33 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    TimeSpan flightLength;
 }
 
 <div class="row">
-    <div class="col-10 offset-2">
+    <div class="col-10">
         @foreach (var flight in Model)
         {
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">
                     @flight.From.Location (@flight.From.Name) <i class="fa fa-plane-departure"></i> @flight.To.Location (@flight.To.Name)
                 </div>
                 <div class="card-body">
-
+                    <div>
+                        Departure: @flight.Departure.ToShortDateString() <i style="color:lightpink" class="fa fa-plane"></i>
+                        @flight.Departure.ToShortTimeString()-@flight.Arrival.ToShortTimeString()
+                        @{
+                            flightLength = flight.Arrival - flight.Departure;
+                        }
+                        Travel time: @flightLength.Hours hours
+                    </div>
                 </div>
+                <div class="card-footer">
+                    <a class="btn btn-info" asp-controller="Ticket" asp-action="Book" asp-route-flightId="@flight.Id">Book</a>
+                    Economy: @flight.EconomyPrice.ToString("c")
+                    Business: @flight.BusinessPrice.ToString("c")
+                </div>
+
             </div>
         }
     </div>
