@@ -18,8 +18,8 @@ namespace flicket.Tests.Handlers
     public class GetFLightsListHandlerTests : IDisposable
     {
         private readonly DataContext _context = new(SqliteInMemory.CreateOptions<DataContext>());
-        private GetFlightsListHandler _sut;
-        private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddMaps(typeof(FlightProfiles).Assembly)));
+        private GetTicketsListHandler _sut;
+        private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddMaps(typeof(FlightProfile).Assembly)));
 
         public GetFLightsListHandlerTests()
         {

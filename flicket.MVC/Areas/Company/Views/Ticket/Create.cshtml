@@ -1,0 +1,30 @@
+﻿@model AddTicketVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-8">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SeatClass"></label>
+                <select class="form-control" asp-for="SeatClass" asp-items="Model.SeatClasses"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position"></label>
+                <input asp-for="Position" class="form-control" />
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.FlightId, Model.Flights, "Select a flight", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a class="btn btn-danger" asp-action="Index">Back to list</a>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -17,6 +17,7 @@ namespace flicket.Data
         }
 
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Airline> Airlines { get; set; }
         public DbSet<Airport> Airports { get; set; }
     }

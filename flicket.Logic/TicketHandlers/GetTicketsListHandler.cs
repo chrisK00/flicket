@@ -9,9 +9,9 @@ using flicket.Models.ViewModels;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace flicket.Logic.FlightHandlers
+namespace flicket.Logic.TicketHandlers
 {
-    public class GetTicketsListHandler : IRequestHandler<GetFlightsListQuery, IEnumerable<FlightListVM>>
+    public class GetTicketsListHandler : IRequestHandler<GetTicketsListQuery, IEnumerable<TicketListVM>>
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
@@ -22,9 +22,9 @@ namespace flicket.Logic.FlightHandlers
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<FlightListVM>> Handle(GetFlightsListQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TicketListVM>> Handle(GetTicketsListQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Flights.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider)
+            return await _context.Tickets.ProjectTo<TicketListVM>(_mapper.ConfigurationProvider)
                 .AsNoTracking().ToListAsync();
         }
     }

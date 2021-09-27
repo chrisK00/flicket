@@ -4,9 +4,9 @@ using flicket.Models.ViewModels;
 
 namespace flicket.Logic.Profiles
 {
-    public class AirlineProfiles : Profile
+    public class AirlineProfile : Profile
     {
-        public AirlineProfiles()
+        public AirlineProfile()
         {
             CreateMap<Airline, AirlineVM>();
         }

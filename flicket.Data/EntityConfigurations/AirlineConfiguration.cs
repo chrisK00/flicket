@@ -1,4 +1,5 @@
-﻿using flicket.Models.Entities;
+﻿using System;
+using flicket.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

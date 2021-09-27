@@ -20,7 +20,7 @@ namespace flicket.Tests.Handlers
     {
         private readonly DataContext _context = new(SqliteInMemory.CreateOptions<DataContext>());
         private GetFlightDetailHandler _sut;
-        private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddMaps(typeof(FlightProfiles).Assembly)));
+        private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddMaps(typeof(FlightProfile).Assembly)));
 
         public GetFlightDetailHandlerTests()
         {

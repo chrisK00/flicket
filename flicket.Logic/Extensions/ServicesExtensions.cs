@@ -9,7 +9,7 @@ namespace flicket.Logic.Extensions
     {
         public static void ConfigureLogicServices(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(FlightProfiles).Assembly);
+            services.AddAutoMapper(typeof(FlightProfile).Assembly);
             services.AddMediatR(typeof(GetFlightDetailHandler).Assembly);
         }
     }

@@ -6,4 +6,5 @@ namespace flicket.Models
 {
     public record GetFlightDetailQuery(int Id) : IRequest<FlightDetailVM>;
     public record GetFlightsListQuery() : IRequest<IEnumerable<FlightListVM>>;
+    public record GetTicketsListQuery() : IRequest<IEnumerable<TicketListVM>>;
 }
