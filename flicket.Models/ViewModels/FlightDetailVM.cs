@@ -1,5 +1,4 @@
 ﻿using System;
-using flicket.Models.Entities;
 
 namespace flicket.Models.ViewModels
 {

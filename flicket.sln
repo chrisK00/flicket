@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Logic", "flicket.Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Models", "flicket.Models\flicket.Models.csproj", "{72194E32-8880-41C1-A706-ECB853C7FA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.Tests", "flicket.Tests\flicket.Tests.csproj", "{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Tests", "flicket.Tests\flicket.Tests.csproj", "{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
