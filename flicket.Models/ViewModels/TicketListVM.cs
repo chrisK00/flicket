@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace flicket.Models.ViewModels
 {
@@ -7,7 +8,7 @@ namespace flicket.Models.ViewModels
         public int Id { get; set; }
         public DateTime? PurchaseDate { get; set; }
         public double Price { get; set; }
-        public SeatClass SeatClass { get; set; }
+        public string SeatClass { get; set; }
         public string Position { get; set; }
     }
 }
