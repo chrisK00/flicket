@@ -10,10 +10,10 @@
         @foreach (var flight in Model)
         {
             <div class="card mb-3">
-                <div class="card-header">
+                <div class="card-header text-light bg-info">
                     @flight.From.Location (@flight.From.Name) <i class="fa fa-plane-departure"></i> @flight.To.Location (@flight.To.Name)
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-light">
                     <div>
                         Departure: @flight.Departure.ToShortDateString() <i style="color:lightpink" class="fa fa-plane"></i>
                         @flight.Departure.ToShortTimeString()-@flight.Arrival.ToShortTimeString()
