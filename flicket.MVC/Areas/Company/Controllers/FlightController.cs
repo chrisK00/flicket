@@ -56,8 +56,9 @@ namespace flicket.MVC.Areas.Company.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePost(AddFlightVM flightVM)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || flightVM.Departure > flightVM.Arrival)
             {
+                ModelState.AddModelError("Departure", "You have to depart before you arrive");
                 await BuildAddFlightVMAsync(flightVM);
                 return View(flightVM);
             }
