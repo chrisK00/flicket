@@ -20,7 +20,7 @@ namespace flicket.MVC.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            var flights = await _mediator.Send(new GetFlightsListQuery());
+            var flights = await _mediator.Send(new GetFlightsQuery());
             return View(flights);
         }
     }

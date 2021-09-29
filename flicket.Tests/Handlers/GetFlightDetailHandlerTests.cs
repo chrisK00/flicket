@@ -19,7 +19,7 @@ namespace flicket.Tests.Handlers
     public class GetFlightDetailHandlerTests : IDisposable
     {
         private readonly DataContext _context = new(SqliteInMemory.CreateOptions<DataContext>());
-        private GetFlightDetailHandler _sut;
+        private GetFlightHandler _sut;
         private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddMaps(typeof(FlightProfile).Assembly)));
 
         public GetFlightDetailHandlerTests()
@@ -34,7 +34,7 @@ namespace flicket.Tests.Handlers
             _context.SaveChanges();
 
             _sut = new(_context, _mapper);
-            var result = await _sut.Handle(new GetFlightDetailQuery(flight.Id), default);
+            var result = await _sut.Handle(new GetFlightQuery(flight.Id), default);
             result.Should().NotBeNull();
             result.Id.Should().Be(flight.Id);
             result.Airline.Should().NotBeNull();

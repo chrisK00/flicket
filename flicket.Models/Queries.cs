@@ -4,7 +4,9 @@ using MediatR;
 
 namespace flicket.Models
 {
-    public record GetFlightDetailQuery(int Id) : IRequest<FlightDetailVM>;
-    public record GetFlightsListQuery() : IRequest<IEnumerable<FlightListVM>>;
-    public record GetTicketsListQuery() : IRequest<IEnumerable<TicketListVM>>;
+    public record GetFlightQuery(int Id) : IRequest<FlightDetailVM>;
+    public record GetFlightsQuery() : IRequest<IEnumerable<FlightListVM>>;
+    public record GetTicketsQuery() : IRequest<IEnumerable<TicketListVM>>;
+    public record GetAirlinesQuery() : IRequest<IEnumerable<AirlineVM>>();
+    public record GetAirportsQuery() : IRequest<IEnumerable<AirportVM>>();
 }

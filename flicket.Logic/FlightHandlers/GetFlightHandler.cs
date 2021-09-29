@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace flicket.Logic.FlightHandlers
 {
-    public class GetFlightDetailHandler : IRequestHandler<GetFlightDetailQuery, FlightDetailVM>
+    public class GetFlightHandler : IRequestHandler<GetFlightQuery, FlightDetailVM>
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
 
-        public GetFlightDetailHandler(DataContext context, IMapper mapper)
+        public GetFlightHandler(DataContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<FlightDetailVM> Handle(GetFlightDetailQuery request, CancellationToken cancellationToken)
+        public async Task<FlightDetailVM> Handle(GetFlightQuery request, CancellationToken cancellationToken)
         {
             return await _context.Flights.ProjectTo<FlightDetailVM>(_mapper.ConfigurationProvider)
                 .AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.Id);

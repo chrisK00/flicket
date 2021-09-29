@@ -1,9 +1,5 @@
 ﻿@model AddTicketVM
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <form method="post">
     <div class="row">
         <div class="col-8">
@@ -21,8 +17,7 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-success">Create</button>
-    <a class="btn btn-danger" asp-action="Index">Back to list</a>
+<partial name="_CreateAndBackToList" />
 </form>
 
 @section Scripts{

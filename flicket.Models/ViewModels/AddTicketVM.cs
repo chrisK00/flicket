@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using flicket.Models.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace flicket.Models.ViewModels

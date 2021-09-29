@@ -6,8 +6,8 @@
     <title>@ViewData["Title"] - flicket.MVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.jqueryui.min.css"/>
+    <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.jqueryui.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 </head>
 <body>
@@ -30,8 +30,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Flight" asp-action="Index">Flights</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Company" asp-controller="Ticket" asp-action="Index">Tickets</a>
+                        <li class="nav-item dropdown">
+                            <button data-toggle="dropdown"class="btn dropdown-toggle">Management</button>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="Company" asp-controller="Ticket" asp-action="Index">Tickets</a>
+                                <a class="dropdown-item" asp-area="Company" asp-controller="Flight" asp-action="Index">Flights</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
