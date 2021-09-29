@@ -62,7 +62,9 @@ namespace flicket.MVC.Areas.Company.Controllers
                 return View(flightVM);
             }
 
-            var flightCommand = new AddFlightCommand(flightVM.Departure.ToUniversalTime(), flightVM.Arrival.ToUniversalTime());
+            var flightCommand = new AddFlightCommand(flightVM.AirportFromId, flightVM.AirportToId, flightVM.AirlineId, flightVM.BusinessPrice,
+                flightVM.EconomyPrice, flightVM.Departure.ToUniversalTime(), flightVM.Arrival.ToUniversalTime());
+
             await _mediator.Send(flightCommand);
             return RedirectToAction(nameof(Index));
         }

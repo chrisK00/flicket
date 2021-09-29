@@ -9,7 +9,7 @@ using flicket.Models.ViewModels;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace flicket.Logic.TicketHandlers
+namespace flicket.Logic.AirportHandlers
 {
     public class GetAirportsHandler : IRequestHandler<GetAirportsQuery, IEnumerable<AirportVM>>
     {

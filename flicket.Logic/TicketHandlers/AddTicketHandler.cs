@@ -9,12 +9,12 @@ using MediatR;
 
 namespace flicket.Logic.TicketHandlers
 {
-    public class AddTicketHandler : IRequestHandler<AddTicketCommand>
+    public class AddFlightHandler : IRequestHandler<AddTicketCommand>
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
 
-        public AddTicketHandler(DataContext context, IMapper mapper)
+        public AddFlightHandler(DataContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
