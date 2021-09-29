@@ -58,11 +58,6 @@ namespace flicket.MVC.Areas.Company.Controllers
         {
             if (!ModelState.IsValid)
             {
-                if (flightVM.Departure > flightVM.Arrival)
-                {
-                    ModelState.AddModelError("Departure", "You have to depart before you arrive");
-                }
-
                 await BuildAddFlightVMAsync(flightVM);
                 return View(flightVM);
             }
