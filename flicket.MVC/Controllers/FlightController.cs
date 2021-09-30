@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using flicket.Models;
 using flicket.Models.Params;
+using flicket.Models.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +24,15 @@ namespace flicket.MVC.Controllers
         /// <returns></returns>
         public async Task<IActionResult> IndexAsync([Bind(Prefix = "item2")] FlightParams flightParams)
         {
-            var flights = await _mediator.Send(new GetFlightsQuery(flightParams));
+            IEnumerable<FlightListVM> flights;
+
+            if (!ModelState.IsValid)
+            {
+                flights = await _mediator.Send(new GetFlightsQuery(new FlightParams()));
+                return View((flights, flightParams));
+            }
+
+            flights = await _mediator.Send(new GetFlightsQuery(flightParams));
             return View((flights, flightParams));
         }
     }

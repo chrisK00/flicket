@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,10 +26,11 @@ namespace flicket.Logic.FlightHandlers
 
         public async Task<IEnumerable<FlightListVM>> Handle(GetFlightsQuery request, CancellationToken cancellationToken)
         {
-            var query =  _context.Flights.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider).AsNoTracking();
+            var query = _context.Flights.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider).AsNoTracking();
 
-            query = query.Where(f => _context.Tickets
-                .Where(t => t.FlightId == f.Id).Count() >= request.Params.Passengers);
+            query = query
+                .Where(f => f.Departure > DateTime.UtcNow
+                 && _context.Tickets.Where(t => t.FlightId == f.Id).Count() >= request.Params.Passengers);
 
             return await query.ToListAsync();
         }

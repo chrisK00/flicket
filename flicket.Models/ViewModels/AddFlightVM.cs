@@ -12,6 +12,7 @@ namespace flicket.Models.ViewModels
         public IEnumerable<SelectListItem> Airports { get; set; }
         public IEnumerable<SelectListItem> Airlines { get; set; }
 
+        [CompareTo(nameof(AirportToId), ComparisonType.NotEqual, ErrorMessage = "Airport from has to be different than to")]
         [Required(ErrorMessage = "From airport  is required")]
         public int AirportFromId { get; set; }
 
