@@ -30,6 +30,7 @@ namespace flicket.Logic.FlightHandlers
 
             query = query
                 .Where(f => f.Departure > DateTime.UtcNow
+                 && !f.Cancelled
                  && _context.Tickets.Where(t => t.FlightId == f.Id).Count() >= request.Params.Passengers);
 
             return await query.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider).ToListAsync();

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace flicket.Data
 {
-    public class DataContext : IdentityDbContext<IdentityUser>
+    public class DataContext : IdentityDbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -18,7 +18,8 @@ namespace flicket.Data
             builder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
         }
 
-        //public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Airline> Airlines { get; set; }

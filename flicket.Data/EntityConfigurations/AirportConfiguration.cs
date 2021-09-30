@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace flicket.Data.EntityConfigurations
 {
+
     public class AirportConfiguration : IEntityTypeConfiguration<Airport>
     {
         public void Configure(EntityTypeBuilder<Airport> builder)

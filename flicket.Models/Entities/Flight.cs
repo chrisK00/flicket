@@ -12,5 +12,7 @@ namespace flicket.Models.Entities
         public double BusinessPrice { get; set; }
         public double EconomyPrice { get; set; }
         public Airline Airline { get; set; }
+        public int CompanyId { get; set; }
+        public bool Cancelled { get; set; }
     }
 }

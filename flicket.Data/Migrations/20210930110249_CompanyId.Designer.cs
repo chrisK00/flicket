@@ -10,8 +10,8 @@ using flicket.Data;
 namespace flicket.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210930103912_Identity")]
-    partial class Identity
+    [Migration("20210930110249_CompanyId")]
+    partial class CompanyId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,10 @@ namespace flicket.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -135,6 +139,8 @@ namespace flicket.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -255,6 +261,36 @@ namespace flicket.Data.Migrations
                     b.ToTable("Airports");
                 });
 
+            modelBuilder.Entity("flicket.Models.Entities.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
             modelBuilder.Entity("flicket.Models.Entities.Flight", b =>
                 {
                     b.Property<int>("Id")
@@ -271,6 +307,12 @@ namespace flicket.Data.Migrations
                     b.Property<double>("BusinessPrice")
                         .HasColumnType("float");
 
+                    b.Property<bool>("Cancelled")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Departure")
                         .HasColumnType("datetime2");
 
@@ -286,6 +328,8 @@ namespace flicket.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AirlineId");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("FromId");
 
@@ -322,6 +366,9 @@ namespace flicket.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -348,9 +395,23 @@ namespace flicket.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyId");
+
                     b.HasIndex("SeatId");
 
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("flicket.Models.Entities.AppUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasDiscriminator().HasValue("AppUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -410,6 +471,12 @@ namespace flicket.Data.Migrations
                         .WithMany()
                         .HasForeignKey("AirlineId");
 
+                    b.HasOne("flicket.Models.Entities.Company", null)
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("flicket.Models.Entities.Airport", "From")
                         .WithMany()
                         .HasForeignKey("FromId");
@@ -427,11 +494,25 @@ namespace flicket.Data.Migrations
 
             modelBuilder.Entity("flicket.Models.Entities.Ticket", b =>
                 {
+                    b.HasOne("flicket.Models.Entities.Company", null)
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("flicket.Models.Entities.Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId");
 
                     b.Navigation("Seat");
+                });
+
+            modelBuilder.Entity("flicket.Models.Entities.AppUser", b =>
+                {
+                    b.HasOne("flicket.Models.Entities.Company", null)
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

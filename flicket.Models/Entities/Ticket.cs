@@ -13,6 +13,7 @@ namespace flicket.Models.Entities
         public string LastName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public int SecurityNumber { get; set; } 
+        public int SecurityNumber { get; set; }
+        public int CompanyId { get; set; }
     }
 }
