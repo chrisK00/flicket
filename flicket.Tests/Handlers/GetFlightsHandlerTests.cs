@@ -10,6 +10,7 @@ using flicket.Logic.Profiles;
 using flicket.Logic.TicketHandlers;
 using flicket.Models;
 using flicket.Models.Entities;
+using flicket.Models.Params;
 using FluentAssertions;
 using TestSupport.EfHelpers;
 using Xunit;
@@ -34,7 +35,7 @@ namespace flicket.Tests.Handlers
             _context.SaveChanges();
 
             _sut = new(_context, _mapper);
-            var result = await _sut.Handle(new GetFlightsQuery(), default);
+            var result = await _sut.Handle(new GetFlightsQuery(new FlightParams()), default);
             result.Count().Should().BeGreaterThan(0);
         }
 

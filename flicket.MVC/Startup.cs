@@ -23,6 +23,7 @@ namespace flicket.MVC
             services.ConfigureLogicServices();
             services.ConfigureDataServices(Configuration.GetConnectionString("Default"));
 
+            services.AddRazorPages();
             services.AddControllersWithViews();
         }
 
@@ -44,6 +45,7 @@ namespace flicket.MVC
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -55,6 +57,8 @@ namespace flicket.MVC
                 endpoints.MapControllerRoute(
                   name: "default",
                   pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }

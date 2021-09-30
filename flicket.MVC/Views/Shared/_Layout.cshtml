@@ -31,13 +31,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Flight" asp-action="Index">Flights</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <button data-toggle="dropdown"class="btn dropdown-toggle">Management</button>
+                            <button data-toggle="dropdown" class="btn dropdown-toggle">Management</button>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-area="Company" asp-controller="Ticket" asp-action="Index">Tickets</a>
                                 <a class="dropdown-item" asp-area="Company" asp-controller="Flight" asp-action="Index">Flights</a>
                             </div>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>

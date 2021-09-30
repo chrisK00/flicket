@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using flicket.Models.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace flicket.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<IdentityUser>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -16,6 +18,7 @@ namespace flicket.Data
             builder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
         }
 
+        //public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Airline> Airlines { get; set; }
