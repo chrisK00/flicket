@@ -12,6 +12,8 @@ namespace flicket.Models.ViewModels
         public double EconomyPrice { get; set; }
         public AirportVM From { get; set; }
         public AirportVM To { get; set; }
+        public string FormattedFrom => $"{From.Location} ({From.Name})";
+        public string FormattedTo => $"{To.Location} ({To.Name})";
         public string Airline { get; set; }
         public TimeSpan Duration => Arrival - Departure;
         public FlightParams FlightParams{ get; set; }

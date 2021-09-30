@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using flicket.Constants;
 using flicket.Models;
+using flicket.Models.Params;
 using flicket.Models.ViewModels;
 using flicket.MVC.Extensions;
 using MediatR;
@@ -72,5 +73,16 @@ namespace flicket.MVC.Areas.Company.Controllers
             await _mediator.Send(flightCommand);
             return RedirectToAction(nameof(Index));
         }
+
+        #region API endpoints
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0 ,CompanyId = User.GetCompanyId() }));
+            return Ok(new { data = flights });
+        }
+
+        #endregion
     }
 }

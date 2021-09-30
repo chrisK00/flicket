@@ -9,12 +9,7 @@ namespace flicket.MVC.Extensions
         public static int? GetCompanyId(this ClaimsPrincipal user)
         {
            var value = user.Claims.FirstOrDefault(x => x.Type == nameof(AppUserVM.CompanyId))?.Value;
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return null;
-            }
-
-            return int.Parse(value);
+            return string.IsNullOrWhiteSpace(value) ? null : int.Parse(value);
         }
     }
 }

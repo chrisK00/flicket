@@ -20,7 +20,7 @@
         {
             <div class="card mb-3">
                 <div class="card-header text-light bg-info">
-                    @flight.From.Location (@flight.From.Name) <i class="fa fa-plane-departure"></i> @flight.To.Location (@flight.To.Name)
+                    @flight.FormattedFrom <i class="fa fa-plane-departure"></i> @flight.FormattedTo
                 </div>
                 <div class="card-body bg-light">
                     <div>
@@ -32,8 +32,8 @@
                 </div>
                 <div class="card-footer d-flex">
                     <a class="btn btn-info mr-5" asp-controller="Ticket" asp-action="Book" asp-route-flightId="@flight.Id">Book</a>
-                    Economy: @flight.EconomyPrice.ToString("c")
-                    Business: @flight.BusinessPrice.ToString("c")
+                    <!-- TODO check what the filter contains  -->
+                    Price: @flight.EconomyPrice.ToString("c")
                     <div class="text-info ml-5">@flight.Airline</div>
                 </div>
             </div>

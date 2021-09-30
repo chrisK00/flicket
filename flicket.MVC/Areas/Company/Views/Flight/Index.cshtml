@@ -1,3 +1,23 @@
-﻿
-<a class="btn btn-info" asp-action="Create">Create</a>
-<div>Hello list of flights for specific company here and with ignore query filters</div>
+﻿<a class="btn btn-info" asp-action="Create">Create</a>
+
+<div class="border rounded">
+    <table id="tblData" class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-info">
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Economy Price</th>
+                <th>Business Price</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Airline</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/flight.js"></script>
+}
+
+
