@@ -33,6 +33,11 @@ namespace flicket.Logic.FlightHandlers
                  && !f.Cancelled
                  && _context.Tickets.Where(t => t.FlightId == f.Id).Count() >= request.Params.Passengers);
 
+            if (request.Params.CompanyId.HasValue)
+            {
+                query = query.Where(x => x.CompanyId == request.Params.CompanyId.Value);
+            }
+
             return await query.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider).ToListAsync();
         }
     }

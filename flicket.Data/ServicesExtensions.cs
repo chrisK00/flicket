@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using flicket.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,10 @@ namespace flicket.Data
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
-            }).AddDefaultTokenProviders().AddEntityFrameworkStores<DataContext>();
+            }).AddDefaultTokenProviders()
+            .AddClaimsPrincipalFactory<UserClaimsFactory>()
+            .AddEntityFrameworkStores<DataContext>();
+
         }
     }
 }

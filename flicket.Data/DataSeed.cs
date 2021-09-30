@@ -36,6 +36,8 @@ namespace flicket.Data
             context.Add(company);
             context.SaveChanges();
 
+            companyUser.CompanyId = company.Id;
+
             var flights = new List<Flight>
             {
                 new Flight {
