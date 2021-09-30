@@ -26,7 +26,8 @@ namespace flicket.Logic.FlightHandlers
                 EconomyPrice = request.EconomyPrice,
                 BusinessPrice = request.BusinessPrice,
                 Departure = request.Departure,
-                Arrival = request.Arrival
+                Arrival = request.Arrival,
+                CompanyId = request.CompanyId
             };
 
             flight.Airline = await _context.Airlines.FirstAsync(x => x.Id == request.AirlineId);

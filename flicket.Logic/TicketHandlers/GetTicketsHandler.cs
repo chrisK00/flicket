@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -24,8 +25,13 @@ namespace flicket.Logic.TicketHandlers
 
         public async Task<IEnumerable<TicketListVM>> Handle(GetTicketsQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Tickets.ProjectTo<TicketListVM>(_mapper.ConfigurationProvider)
-                .AsNoTracking().ToListAsync();
+            var query = _context.Tickets.AsNoTracking();
+            if (request.Params.CompanyId.HasValue)
+            {
+                query = query.Where(x => x.CompanyId == request.Params.CompanyId.Value);
+            }
+
+            return await query.ProjectTo<TicketListVM>(_mapper.ConfigurationProvider).ToListAsync();
         }
     }
 }

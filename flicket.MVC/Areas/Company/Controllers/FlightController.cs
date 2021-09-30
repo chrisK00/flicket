@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using flicket.Constants;
 using flicket.Models;
 using flicket.Models.ViewModels;
+using flicket.MVC.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -66,7 +67,7 @@ namespace flicket.MVC.Areas.Company.Controllers
             }
 
             var flightCommand = new AddFlightCommand(flightVM.AirportFromId, flightVM.AirportToId, flightVM.AirlineId, flightVM.BusinessPrice,
-                flightVM.EconomyPrice, flightVM.Departure.ToUniversalTime(), flightVM.Arrival.ToUniversalTime());
+                flightVM.EconomyPrice, flightVM.Departure.ToUniversalTime(), flightVM.Arrival.ToUniversalTime(), User.GetCompanyId().Value);
 
             await _mediator.Send(flightCommand);
             return RedirectToAction(nameof(Index));

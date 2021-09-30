@@ -25,7 +25,8 @@ namespace flicket.Logic.TicketHandlers
             var ticket = new Ticket
             {
                 FlightId = request.FlightId,
-                Seat = new Seat { Position = request.Position, SeatClass = request.SeatClass }
+                Seat = new Seat { Position = request.Position, SeatClass = request.SeatClass },
+                CompanyId = request.CompanyId
             };
 
             ticket.Price = request.SeatClass == SeatClass.Business

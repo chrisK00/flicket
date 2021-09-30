@@ -33,7 +33,9 @@ namespace flicket.Data
             await AddUsers(userManager, adminRole, companyRole, customerRole, adminUser, companyUser, customerUser);
 
             var company = new Company { Name = "SAS Ltd" };
+            var company2 = new Company { Name = "Lufthansa" };
             context.Add(company);
+            context.Add(company2);
             context.SaveChanges();
 
             companyUser.CompanyId = company.Id;
@@ -58,9 +60,10 @@ namespace flicket.Data
                     Arrival = DateTime.UtcNow.AddDays(10).AddHours(5),
                     BusinessPrice = 250,
                     EconomyPrice = 500,
-                    CompanyId = company.Id
+                    CompanyId = company2.Id
                 }
             };
+
             context.Flights.AddRange(flights);
             context.SaveChanges();
 

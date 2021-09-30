@@ -4,6 +4,7 @@ using flicket.Constants;
 using flicket.Models;
 using flicket.Models.Params;
 using flicket.Models.ViewModels;
+using flicket.MVC.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +40,13 @@ namespace flicket.MVC.Areas.Company.Controllers
 
         private async Task BuildAddTicketVMAsync(AddTicketVM ticketVM)
         {
-            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0 }));
+            int? companyId = null;
+            if (User.IsInRole(Role.Company))
+            {
+                companyId = User.GetCompanyId();
+            }
+
+            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0, CompanyId = companyId }));
             ticketVM.Flights = flights.Select(x => new SelectListItem
             {
                 Text = $"{x.From.Name}-{x.To.Name}: {x.Departure}",
@@ -61,7 +68,7 @@ namespace flicket.MVC.Areas.Company.Controllers
                 return View(ticketVM);
             }
 
-            await _mediator.Send(new AddTicketCommand(ticketVM.FlightId, ticketVM.SeatClass, ticketVM.Position));
+            await _mediator.Send(new AddTicketCommand(ticketVM.FlightId, ticketVM.SeatClass, ticketVM.Position, User.GetCompanyId().Value));
             return RedirectToAction(nameof(Index));
         }
 
@@ -70,7 +77,13 @@ namespace flicket.MVC.Areas.Company.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var tickets = await _mediator.Send(new GetTicketsQuery());
+            int? companyId = null;
+            if (User.IsInRole(Role.Company))
+            {
+                companyId = User.GetCompanyId();
+            }
+
+            var tickets = await _mediator.Send(new GetTicketsQuery(new TicketParams { CompanyId = companyId }));
             return Ok(new { data = tickets });
         }
 
