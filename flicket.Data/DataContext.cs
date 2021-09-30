@@ -1,4 +1,5 @@
-﻿using flicket.Models.Entities;
+﻿using System.Linq;
+using flicket.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace flicket.Data
@@ -12,7 +13,6 @@ namespace flicket.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
             builder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
         }
 

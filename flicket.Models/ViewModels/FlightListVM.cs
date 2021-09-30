@@ -1,4 +1,5 @@
 ﻿using System;
+using flicket.Models.Params;
 
 namespace flicket.Models.ViewModels
 {
@@ -13,5 +14,6 @@ namespace flicket.Models.ViewModels
         public AirportVM To { get; set; }
         public string Airline { get; set; }
         public TimeSpan Duration => Arrival - Departure;
+        public FlightParams FlightParams{ get; set; }
     }
 }

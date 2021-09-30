@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using flicket.Models;
+using flicket.Models.Params;
 using flicket.Models.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ namespace flicket.MVC.Areas.Company.Controllers
 
         private async Task BuildAddTicketVMAsync(AddTicketVM ticketVM)
         {
-            var flights = await _mediator.Send(new GetFlightsQuery());
+            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0 }));
             ticketVM.Flights = flights.Select(x => new SelectListItem
             {
                 Text = $"{x.From.Name}-{x.To.Name}: {x.Departure}",
