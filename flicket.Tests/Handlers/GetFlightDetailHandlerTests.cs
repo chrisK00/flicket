@@ -28,8 +28,10 @@ namespace flicket.Tests.Handlers
         }
 
         [Theory, AutoData]
-        public async Task GetFlightDetailHandler_Returns_FlightDetailVM(Flight flight)
+        public async Task GetFlightHandler_Returns_FlightDetailVM(Flight flight, Company company)
         {
+            _context.Add(company);
+            flight.CompanyId = company.Id;
             _context.Add(flight);
             _context.SaveChanges();
 

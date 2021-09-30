@@ -43,7 +43,7 @@ namespace flicket.MVC.Areas.Company.Controllers
             var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0, CompanyId = User.GetCompanyId() }));
             ticketVM.Flights = flights.Select(x => new SelectListItem
             {
-                Text = $"{x.From.Name}-{x.To.Name}: {x.Departure}",
+                Text = $"{x.From}-{x.To}: {x.Departure}",
                 Value = x.Id.ToString()
             });
 

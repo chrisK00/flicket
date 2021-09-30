@@ -12,12 +12,10 @@ namespace flicket.Logic.TicketHandlers
     public class AddFlightHandler : IRequestHandler<AddTicketCommand>
     {
         private readonly DataContext _context;
-        private readonly IMapper _mapper;
 
-        public AddFlightHandler(DataContext context, IMapper mapper)
+        public AddFlightHandler(DataContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(AddTicketCommand request, CancellationToken cancellationToken)

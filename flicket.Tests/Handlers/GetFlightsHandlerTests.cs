@@ -29,19 +29,19 @@ namespace flicket.Tests.Handlers
         }
 
         [Theory, AutoData]
-        public async Task GetFlightsHandler_Returns_Flights(List<Flight> flights)
+        public async Task GetFlightsHandler_Returns_Flights(IEnumerable<Flight> flights, Company company)
         {
+            _context.Add(company);
+            flights = flights.Select(x => { x.CompanyId = company.Id; return x; });
             _context.AddRange(flights);
             _context.SaveChanges();
 
             _sut = new(_context, _mapper);
-            var result = await _sut.Handle(new GetFlightsQuery(new FlightParams()), default);
+            var result = await _sut.Handle(new GetFlightsQuery(new FlightParams { Passengers = 0 }), default);
             result.Count().Should().BeGreaterThan(0);
         }
 
-#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
         public void Dispose()
-#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
             _context.Dispose();
         }
