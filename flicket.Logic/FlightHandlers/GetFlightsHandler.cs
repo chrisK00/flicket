@@ -26,13 +26,13 @@ namespace flicket.Logic.FlightHandlers
 
         public async Task<IEnumerable<FlightListVM>> Handle(GetFlightsQuery request, CancellationToken cancellationToken)
         {
-            var query = _context.Flights.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider).AsNoTracking();
+            var query = _context.Flights.AsNoTracking();
 
             query = query
                 .Where(f => f.Departure > DateTime.UtcNow
                  && _context.Tickets.Where(t => t.FlightId == f.Id).Count() >= request.Params.Passengers);
 
-            return await query.ToListAsync();
+            return await query.ProjectTo<FlightListVM>(_mapper.ConfigurationProvider).ToListAsync();
         }
     }
 }
