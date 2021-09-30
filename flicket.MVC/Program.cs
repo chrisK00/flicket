@@ -1,6 +1,8 @@
 using System;
 using flicket.Data;
+using flicket.Models.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -11,7 +13,7 @@ namespace flicket.MVC
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async System.Threading.Tasks.Task Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console(theme: AnsiConsoleTheme.Code)
@@ -23,7 +25,9 @@ namespace flicket.MVC
             try
             {
                 var context = scope.ServiceProvider.GetRequiredService<DataContext>();
-                DataSeed.Seed(context);
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                await DataSeed.SeedAsync(context, userManager, roleManager);
             }
             catch (Exception ex)
             {

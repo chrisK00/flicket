@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\flicket.Constants\flicket.Constants.csproj" />
     <ProjectReference Include="..\flicket.Models\flicket.Models.csproj" />
   </ItemGroup>
 

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using flicket.Constants;
 using flicket.Models;
 using flicket.Models.ViewModels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace flicket.MVC.Areas.Company.Controllers
 {
     [Area(nameof(Company))]
+    [Authorize(Roles = Role.Admin + "," + Role.Company)]
     public class FlightController : Controller
     {
         private readonly IMediator _mediator;

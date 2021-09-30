@@ -6,5 +6,6 @@ namespace flicket.Models.Params
     {
         [Range(1, 10)]
         public int Passengers { get; set; } = 1;
+        public int? CompanyId { get; set; }
     }
 }

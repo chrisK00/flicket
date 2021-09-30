@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Models", "flicket.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flicket.Tests", "flicket.Tests\flicket.Tests.csproj", "{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flicket.Constants", "flicket.Constants\flicket.Constants.csproj", "{0B8A9660-78A7-470B-9A79-A6478CC68AFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3233A93-F7B3-4B14-B1B0-6660F9AB6BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B8A9660-78A7-470B-9A79-A6478CC68AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B8A9660-78A7-470B-9A79-A6478CC68AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B8A9660-78A7-470B-9A79-A6478CC68AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B8A9660-78A7-470B-9A79-A6478CC68AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
