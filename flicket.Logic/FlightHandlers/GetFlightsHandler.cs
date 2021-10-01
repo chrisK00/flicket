@@ -29,7 +29,9 @@ namespace flicket.Logic.FlightHandlers
             var query = _context.Flights.AsNoTracking();
 
             query = query
-                .Where(f => f.Departure > DateTime.UtcNow
+                .Where(f =>
+                 f.Departure >= request.Params.Departure
+                 && f.Arrival <= request.Params.Arrival
                  && !f.Cancelled
                  && _context.Tickets.Where(t => t.FlightId == f.Id).Count() >= request.Params.Passengers);
 

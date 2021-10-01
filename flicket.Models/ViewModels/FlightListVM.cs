@@ -14,6 +14,5 @@ namespace flicket.Models.ViewModels
         public string To { get; set; }
         public string Airline { get; set; }
         public TimeSpan Duration => Arrival - Departure;
-        public FlightParams FlightParams { get; set; }
     }
 }

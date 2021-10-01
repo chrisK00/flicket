@@ -79,7 +79,15 @@ namespace flicket.MVC.Areas.Company.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0 ,CompanyId = User.GetCompanyId() }));
+            var flightParams = new FlightParams
+            {
+                Passengers = 0,
+                CompanyId = User.GetCompanyId(),
+                Arrival = DateTime.MaxValue,
+                Departure = DateTime.MinValue
+            };
+
+            var flights = await _mediator.Send(new GetFlightsQuery(flightParams));
             return Ok(new { data = flights });
         }
 

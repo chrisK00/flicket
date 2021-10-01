@@ -11,8 +11,8 @@ function loadDataTable() {
             {"data":"arrival"},
             {"data":"economyPrice"},
             {"data":"businessPrice"},
-            {"data":"formattedFrom"},
-            {"data":"formattedTo"},
+            {"data":"from"},
+            {"data":"to"},
             {"data":"airline"}
         ]
     })

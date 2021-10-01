@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using flicket.Constants;
 using flicket.Models;
@@ -40,7 +41,13 @@ namespace flicket.MVC.Areas.Company.Controllers
 
         private async Task BuildAddTicketVMAsync(AddTicketVM ticketVM)
         {
-            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams { Passengers = 0, CompanyId = User.GetCompanyId() }));
+            var flights = await _mediator.Send(new GetFlightsQuery(new FlightParams
+            {
+                Passengers = 0,
+                CompanyId = User.GetCompanyId(),
+                Arrival = DateTime.MaxValue
+            }));
+
             ticketVM.Flights = flights.Select(x => new SelectListItem
             {
                 Text = $"{x.From}-{x.To}: {x.Departure}",
@@ -71,7 +78,7 @@ namespace flicket.MVC.Areas.Company.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var tickets = await _mediator.Send(new GetTicketsQuery(new TicketParams { CompanyId = User.GetCompanyId()}));
+            var tickets = await _mediator.Send(new GetTicketsQuery(new TicketParams { CompanyId = User.GetCompanyId() }));
             return Ok(new { data = tickets });
         }
 

@@ -9,6 +9,11 @@
     {
       "library": "datatables@1.10.21",
       "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "tanvirarjel-custom-validation-unobtrusive@1.0.1",
+      "destination": "wwwroot/lib/tanvirarjel-custom-validation-unobtrusive/"
     }
   ]
 }

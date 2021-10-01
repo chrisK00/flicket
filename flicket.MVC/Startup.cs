@@ -1,5 +1,7 @@
 using flicket.Data;
 using flicket.Logic.Extensions;
+using flicket.MVC.Validators;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +26,8 @@ namespace flicket.MVC
             services.ConfigureDataServices(Configuration.GetConnectionString("Default"));
 
             services.AddRazorPages();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddFluentValidation(opt => opt.RegisterValidatorsFromAssemblyContaining<FlightParamsValidator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
